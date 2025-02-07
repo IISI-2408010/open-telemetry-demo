@@ -5,19 +5,6 @@ spring:
   application:
     name: online-shop
 
-#otel:
-#  exporter:
-#    otlp:
-#      endpoint: "http://localhost:4318"
-#  propagators:
-#    - tracecontext
-#  resource:
-#    attributes:
-#      deployment.environment: dev
-#      service:
-#        name: cart
-#        namespace: shop
-
 management:
   endpoints:
     web:

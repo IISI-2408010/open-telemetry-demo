@@ -12,7 +12,7 @@ management:
         include: '*'
   otlp:
     tracing:
-      endpoint: http://jaeger:4318
+      endpoint: http://localhost:4318
   tracing:
     sampling:
       probability: 1.0
