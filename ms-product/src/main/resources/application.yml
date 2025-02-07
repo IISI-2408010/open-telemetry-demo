@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ms-product
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  otlp:
+    tracing:
+      endpoint: http://jaeger:4318
+  tracing:
+    sampling:
+      probability: 1.0

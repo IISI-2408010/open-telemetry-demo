@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: online-shop
+
+#otel:
+#  exporter:
+#    otlp:
+#      endpoint: "http://localhost:4318"
+#  propagators:
+#    - tracecontext
+#  resource:
+#    attributes:
+#      deployment.environment: dev
+#      service:
+#        name: cart
+#        namespace: shop
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318
+  tracing:
+    sampling:
+      probability: 1.0
+
