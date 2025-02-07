@@ -16,10 +16,8 @@ exporters:
     endpoint: jaeger:4317
     tls:
       insecure: true
-  prometheus:
-    endpoint: "0.0.0.0:9464"
   zipkin:
-    endpoint: "http://zipkin:9411/api/v2/spans"
+    endpoint: http://zipkin:9411/api/v2/spans
 
 service:
   pipelines:
@@ -29,7 +27,7 @@ service:
       exporters: [debug, zipkin, otlp/jaeger]
     metrics:
       receivers: [otlp]
-      exporters: [prometheus]
+      exporters: [debug]
     logs:
       receivers: [otlp]
       exporters: [debug]

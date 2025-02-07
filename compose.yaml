@@ -10,12 +10,16 @@ services:
       - "14268:14268"  # HTTP 接收端口
       - "4319:4317" # OTLP gRPC receiver
       - "4320:4318" # OTLP http receiver
+    networks:
+      - otel
 
   zipkin:
     image: openzipkin/zipkin:3.4
     container_name: zipkin
     ports:
       - "9411:9411"
+    networks:
+      - otel
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib:0.119.0
@@ -34,11 +38,9 @@ services:
     depends_on:
       - jaeger
       - zipkin
+    networks:
+      - otel
 
-  prometheus:
-    image: prom/prometheus:v3.1.0
-    container_name: prometheus
-    volumes:
-      - ./docker/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
+networks:
+  otel:
+    driver: bridge
